@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -35,9 +36,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.appui.R
 import androidx.compose.material3.Icon
+import androidx.navigation.NavController
 
 @Composable
-fun MainScreenHouseBooking() {
+fun MainScreenHouseBooking(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -49,17 +51,18 @@ fun MainScreenHouseBooking() {
             painter = painterResource(id = R.drawable.intro_pic),
             contentDescription = "House Description",
             modifier = Modifier
-                .fillMaxWidth(),
-            contentScale = ContentScale.Crop
+                .fillMaxWidth()
+                .aspectRatio(11f / 15f),
+            contentScale = ContentScale.Crop,
         )
 
-        Spacer(modifier = Modifier.height(14.dp))
+        Spacer(modifier = Modifier.height(18.dp))
 
         Text(
             text = "Explore Houses That\nFit Your lifestyle",
             style = MaterialTheme.typography.titleMedium.copy(
-                fontSize = 28.sp,
-                lineHeight = 33.sp,
+                fontSize = 24.sp,
+                lineHeight = 26.sp,
                 textAlign = TextAlign.Center,
                 color = Color.White,
                 fontWeight = FontWeight.Bold
@@ -88,36 +91,38 @@ fun MainScreenHouseBooking() {
             IconButton(
                 onClick = { /*TODO*/ },
                 modifier = Modifier
-                    .size(50.dp)
+                    .size(40.dp)
                     //.background(Color.White, CircleShape)
-                    .border(2.dp, Color.White, CircleShape)
+                    .border(1.dp, Color.White, CircleShape)
             ) {
                 Icon(
                     imageVector = Icons.Default.ThumbUp,
                     contentDescription = null,
-                    tint = Color.White
+                    tint = Color.White,
+                    modifier = Modifier.size(20.dp)
                 )
             }
 
             IconButton(
                 onClick = { /*TODO*/ },
                 modifier = Modifier
-                    .size(50.dp)
+                    .size(40.dp)
                     //.background(Color.White, CircleShape)
-                    .border(2.dp, Color.White, CircleShape)
+                    .border(1.dp, Color.White, CircleShape)
             ) {
                 Icon(
                     imageVector = Icons.Default.ThumbUp,
                     contentDescription = null,
-                    tint = Color.White
+                    tint = Color.White,
+                    modifier = Modifier.size(20.dp)
                 )
             }
 
             Button(
-                onClick = { /*TODO*/ },
+                onClick = { navController.navigate("house_booking_home") },
                 modifier = Modifier
                     .weight(1f)
-                    .height(50.dp),
+                    .height(40.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(0xFFEDF1F1),
                     contentColor = Color(0xFF196d7e)
@@ -142,10 +147,4 @@ fun MainScreenHouseBooking() {
 
         Spacer(modifier = Modifier.height(40.dp))
     }
-}
-
-@Preview
-@Composable
-fun MainScreenHouseBookingPrev() {
-    MainScreenHouseBooking()
 }

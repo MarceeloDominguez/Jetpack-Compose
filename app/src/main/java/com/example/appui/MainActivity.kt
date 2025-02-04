@@ -14,7 +14,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.appui.home.HomeScreen
-import com.example.appui.house_booking.MainScreenHouseBooking
+import com.example.appui.house_booking.HouseBookingNav
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,6 +39,6 @@ fun MainScreen() {
 
     NavHost(navController = navController, startDestination = "home") {
         composable("home") { HomeScreen(navController) }
-        composable("house_booking") { MainScreenHouseBooking() }
+        composable("house_booking") { HouseBookingNav() }
     }
 }
