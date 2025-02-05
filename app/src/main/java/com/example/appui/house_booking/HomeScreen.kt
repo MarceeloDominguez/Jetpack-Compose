@@ -19,6 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.appui.house_booking.components.HomeHeader
+import com.example.appui.house_booking.components.HomeInput
 
 @Composable
 fun HomeScreen() {
@@ -43,6 +44,8 @@ fun HomeScreen() {
                     fontWeight = FontWeight.Bold
                 )
             )
+            Spacer(modifier = Modifier.height(15.dp))
+            HomeInput()
         }
     }
 }
