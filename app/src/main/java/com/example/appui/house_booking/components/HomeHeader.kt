@@ -30,7 +30,7 @@ fun HomeHeader() {
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 5.dp)
+            .padding(bottom = 5.dp, top = 20.dp)
     ) {
         Box() {
             Image(

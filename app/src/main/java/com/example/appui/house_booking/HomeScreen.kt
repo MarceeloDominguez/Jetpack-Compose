@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.appui.house_booking.components.HomeHeader
 import com.example.appui.house_booking.components.HomeInput
+import com.example.appui.house_booking.components.HouseList
 import com.example.appui.house_booking.components.ListHouseTypes
 
 @Composable
@@ -32,7 +33,7 @@ fun HomeScreen() {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(20.dp)
+                .padding(horizontal =  20.dp)
                 .verticalScroll(rememberScrollState())
         ) {
             HomeHeader()
@@ -49,6 +50,9 @@ fun HomeScreen() {
             HomeInput()
             Spacer(modifier = Modifier.height(15.dp))
             ListHouseTypes()
+            Spacer(modifier = Modifier.height(5.dp))
+            HouseList()
+            Spacer(modifier = Modifier.height(15.dp))
         }
     }
 }
