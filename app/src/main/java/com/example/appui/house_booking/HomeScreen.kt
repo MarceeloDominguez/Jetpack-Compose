@@ -15,16 +15,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.appui.house_booking.components.HomeHeader
 import com.example.appui.house_booking.components.HomeInput
 import com.example.appui.house_booking.components.HouseList
 import com.example.appui.house_booking.components.ListHouseTypes
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavController, sharedViewModel: SharedViewModel) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -33,7 +33,7 @@ fun HomeScreen() {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(horizontal =  20.dp)
+                .padding(horizontal = 20.dp)
                 .verticalScroll(rememberScrollState())
         ) {
             HomeHeader()
@@ -51,14 +51,9 @@ fun HomeScreen() {
             Spacer(modifier = Modifier.height(15.dp))
             ListHouseTypes()
             Spacer(modifier = Modifier.height(5.dp))
-            HouseList()
+            HouseList(navController, sharedViewModel)
             Spacer(modifier = Modifier.height(15.dp))
         }
     }
 }
 
-@Preview
-@Composable
-fun HomeScreenPrev() {
-    HomeScreen()
-}

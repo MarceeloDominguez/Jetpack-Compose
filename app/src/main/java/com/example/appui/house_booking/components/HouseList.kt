@@ -3,6 +3,7 @@ package com.example.appui.house_booking.components
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -30,10 +31,11 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.appui.R
+import com.example.appui.house_booking.SharedViewModel
 
 data class House(
     val name: String,
@@ -50,7 +52,7 @@ fun getHouseList(): List<House> {
 }
 
 @Composable
-fun HouseList() {
+fun HouseList(navController: NavController, sharedViewModel: SharedViewModel) {
     val houses = remember {
         getHouseList()
     }
@@ -60,19 +62,24 @@ fun HouseList() {
             .fillMaxSize()
     ) {
         houses.forEach { house ->
-            HouseCard(house)
+            HouseCard(house, navController, sharedViewModel)
             Spacer(modifier = Modifier.height(16.dp))
         }
     }
 }
 
 @Composable
-fun HouseCard(house: House) {
+fun HouseCard(house: House, navController: NavController, sharedViewModel: SharedViewModel) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .height(250.dp)
             .clip(RoundedCornerShape(14.dp))
+            .clickable {
+                sharedViewModel.selectedHouse =
+                    house // Save before navigate to house_booking_details
+                navController.navigate("house_booking_details")
+            }
     ) {
         Image(
             painter = painterResource(id = house.imageRes),
@@ -175,8 +182,3 @@ fun HouseCard(house: House) {
     }
 }
 
-@Preview
-@Composable
-fun HouseListPrev() {
-    HouseList()
-}
