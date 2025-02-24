@@ -1,6 +1,5 @@
 package com.example.appui.house_booking.components
 
-import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -34,22 +33,9 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.appui.R
 import com.example.appui.house_booking.SharedViewModel
-
-data class House(
-    val name: String,
-    val price: Int,
-    @DrawableRes val imageRes: Int
-)
-
-fun getHouseList(): List<House> {
-    return listOf(
-        House("Cozy Family Home", 250000, R.drawable.item_1),
-        House("Modern Apartment", 180000, R.drawable.item_2),
-        House("Luxury Villa", 1200000, R.drawable.item_3)
-    )
-}
+import com.example.appui.house_booking.data.House
+import com.example.appui.house_booking.data.getHouseList
 
 @Composable
 fun HouseList(navController: NavController, sharedViewModel: SharedViewModel) {

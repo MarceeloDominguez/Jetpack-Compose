@@ -9,7 +9,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.appui.house_booking.components.House
+import com.example.appui.house_booking.data.House
 
 class SharedViewModel : ViewModel() {
     var selectedHouse: House? by mutableStateOf(null)
